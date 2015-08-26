@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>net.bpogroup.horario.servlet.LoginServlet</servlet-class>
+</servlet>
+    <servlet>
+        <servlet-name>ReportServlet</servlet-name>
+        <servlet-class>net.bpogroup.horario.servlet.ReportServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AjaxServlet</servlet-name>
+        <servlet-class>net.bpogroup.horario.servlet.AjaxServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TimeServlet</servlet-name>
+        <servlet-class>net.bpogroup.horario.servlet.TimeServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MantenimientoServlet</servlet-name>
+        <servlet-class>net.bpogroup.horario.servlet.MantenimientoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AjaxServlet</servlet-name>
+        <url-pattern>/AjaxServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TimeServlet</servlet-name>
+        <url-pattern>/TimeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReportServlet</servlet-name>
+        <url-pattern>/ReportServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MantenimientoServlet</servlet-name>
+        <url-pattern>/MantenimientoServlet</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

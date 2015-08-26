@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClockPicker</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-clockpicker.min.css">
+    <link rel="stylesheet" type="text/css" href="css/github.min.css">
+    <script type="text/javascript" src="../jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-clockpicker.min.js"></script>
+    <script type="text/javascript" src="js/highlight.min.js"></script>
+    <style type="text/css">
+
+        .input-group {
+            width: 110px;
+            margin-bottom: 10px;
+        }
+        .pull-center {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @media (min-width: 768px) {
+            .container {
+                max-width: 730px;
+            }
+        }
+        @media (max-width: 767px) {
+            .pull-center {
+                float: right;
+            }
+        }
+    </style>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.form-control').change(function () {
+
+                alert($(this).val());
+
+            });
+        });
+    </script>
+</head>
+<body>
+
+        <div class="input-group clockpicker pull-center" data-placement="left" data-align="top" data-autoclose="true">
+            <input type="text" class="form-control" value="13:14">
+				<span class="input-group-addon">
+					<span class="glyphicon glyphicon-time"></span>
+				</span>
+        </div>
+        <div class="input-group clockpicker pull-center" data-placement="left" data-align="top" data-autoclose="true">
+            <input type="text" class="form-control" value="13:21">
+				<span class="input-group-addon">
+					<span class="glyphicon glyphicon-time"></span>
+				</span>
+        </div>
+
+
+<script type="text/javascript">
+    $('.clockpicker').clockpicker()
+            .find('input').change(function () {
+                console.log(this.value);
+            });
+    var input = $('#single-input').clockpicker({
+        placement: 'bottom',
+        align: 'left',
+        autoclose: true,
+        'default': 'now'
+    });
+
+    $('.clockpicker-with-callbacks').clockpicker({
+        donetext: 'Done',
+        init: function () {
+            console.log("colorpicker initiated");
+        },
+        beforeShow: function () {
+            console.log("before show");
+        },
+        afterShow: function () {
+            console.log("after show");
+        },
+        beforeHide: function () {
+            console.log("before hide");
+        },
+        afterHide: function () {
+            console.log("after hide");
+        },
+        beforeHourSelect: function () {
+            console.log("before hour selected");
+        },
+        afterHourSelect: function () {
+            console.log("after hour selected");
+        },
+        beforeDone: function () {
+            console.log("before done");
+        },
+        afterDone: function () {
+            console.log("after done");
+        }
+    })
+            .find('input').change(function () {
+                console.log(this.value);
+            });
+
+    // Manually toggle to the minutes view
+    $('#check-minutes').click(function (e) {
+        // Have to stop propagation here
+        e.stopPropagation();
+        input.clockpicker('show')
+                .clockpicker('toggleView', 'minutes');
+    });
+    if (/mobile/i.test(navigator.userAgent)) {
+        $('input').prop('readOnly', true);
+    }
+</script>
+<script type="text/javascript">
+    hljs.configure({tabReplace: '    '});
+    hljs.initHighlightingOnLoad();
+</script>
+
+
+</body>
+</html>
