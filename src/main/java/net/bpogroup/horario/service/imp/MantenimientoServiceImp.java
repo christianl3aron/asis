@@ -3,14 +3,18 @@ package net.bpogroup.horario.service.imp;
 import net.bpogroup.horario.dao.AreaDAO;
 import net.bpogroup.horario.dao.AsistenciaDAO;
 import net.bpogroup.horario.dao.UsuarioDAO;
-import net.bpogroup.horario.dao.bean.AreaBean;
-import net.bpogroup.horario.dao.bean.AsistenciaBean;
-import net.bpogroup.horario.dao.bean.UsuarioBean;
-import net.bpogroup.horario.dao.imp.AreaDAOImp;
-import net.bpogroup.horario.dao.imp.AsistenciaDAOImp;
-import net.bpogroup.horario.dao.imp.UsuarioDAOImp;
+import net.bpogroup.horario.model.AreaBean;
+import net.bpogroup.horario.model.AsistenciaBean;
+import net.bpogroup.horario.model.UsuarioBean;
+import net.bpogroup.horario.dao.impl.AreaDAOImp;
+import net.bpogroup.horario.dao.impl.AsistenciaDAOImp;
+import net.bpogroup.horario.dao.impl.UsuarioDAOImp;
 import net.bpogroup.horario.service.MantenimientoService;
+import net.bpogroup.horario.util.UtilApp;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -19,27 +23,30 @@ import java.util.List;
  */
 public class MantenimientoServiceImp implements MantenimientoService {
 
-    @Override
+
+
     public List<UsuarioBean> getUsuariosParaCombobox() throws Exception {
-        UsuarioDAO usuarioDAO = new UsuarioDAOImp();
-        return usuarioDAO.getUsuarios();
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        UsuarioDAO usuarioDAO = context.getBean(UsuarioDAO.class);
+        return usuarioDAO.listAll();
     }
 
-    @Override
     public List<AreaBean> getAreaParaCombobox() throws Exception {
-        AreaDAO areaDAO = new AreaDAOImp();
-        return areaDAO.getAreas();
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        AreaDAO areaDAO = context.getBean(AreaDAO.class);
+        return areaDAO.listAll();
     }
 
-    @Override
     public List<AsistenciaBean> getAsistenciasPorUsuarios(Date ti, Date tf, String listaDni) throws Exception {
-        AsistenciaDAO asistenciaDAO = new AsistenciaDAOImp();
-        return asistenciaDAO.getAsistenciasPorUsuarios(ti, tf, listaDni);
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        AsistenciaDAO asistenciaDAO = context.getBean(AsistenciaDAO.class);
+        List<AsistenciaBean> list = asistenciaDAO.listAsistenciasPorUsuarios(ti, tf, listaDni);
+        return UtilApp.formatDateInAsistenciaBeanList(list, 11, 16);
     }
 
-    @Override
     public void saveAsistencia(String dnis, String vals) throws Exception {
-        AsistenciaDAO asistenciaDAO = new AsistenciaDAOImp();
-        asistenciaDAO.saveAsistencia(dnis, vals);
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        AsistenciaDAO asistenciaDAO = context.getBean(AsistenciaDAO.class);
+        asistenciaDAO.update(dnis, vals);
     }
 }

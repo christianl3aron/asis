@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - bpohorario@localhost" uuid="1505c866-6630-4d4e-bff0-25b9c6dfe027">
+    <database-info product="MySQL" version="5.6.26-log" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <schema name="" catalog="bpohorario"/>
+    <table name="bh_area" schema="" catalog="bpohorario" type="TABLE">
+      <column name="idarea" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="area" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idarea"/>
+      <exported-key name="idarea" table="bh_usuario" schema="" catalog="bpohorario" columns="idarea"/>
+      <index name="idarea_UNIQUE" unique="true" columns="idarea"/>
+    </table>
+    <table name="bh_cargo" schema="" catalog="bpohorario" type="TABLE">
+      <column name="idcargo" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="cargo" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idcargo"/>
+      <index name="idcargo_UNIQUE" unique="true" columns="idcargo"/>
+    </table>
+    <table name="bh_condicion" schema="" catalog="bpohorario" type="TABLE">
+      <column name="idcondicion" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="condicion" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idcondicion"/>
+    </table>
+    <table name="bh_estado" schema="" catalog="bpohorario" type="TABLE">
+      <column name="idestado" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="estado" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idestado"/>
+      <index name="idbh_estado_UNIQUE" unique="true" columns="idestado"/>
+    </table>
+    <table name="bh_horario" schema="" catalog="bpohorario" type="TABLE">
+      <column name="dni" sqlType="VARCHAR" precision="8" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ini_jornada" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="ini_break" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="fin_break" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="fin_jornada" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="dia" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <primary-key name="PRIMARY" columns="dni,dia"/>
+    </table>
+    <table name="bh_tipo_usuario" schema="" catalog="bpohorario" type="TABLE">
+      <column name="idtipo_usuario" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="denominacion" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="idtipo_usuario"/>
+      <exported-key name="idtipo_usuario" table="bh_usuario" schema="" catalog="bpohorario" columns="idtipo_usuario"/>
+      <index name="idtipo_usuario_UNIQUE" unique="true" columns="idtipo_usuario"/>
+    </table>
+    <table name="bh_usuario" schema="" catalog="bpohorario" type="TABLE">
+      <column name="dni" sqlType="VARCHAR" precision="8" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nombres" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="apellidos" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="idtipo_usuario" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="idarea" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="idcargo" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="idestado" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="ult_inicio" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="ult_fin" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="condicion" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="monitor" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <column name="flag" sqlType="VARCHAR" precision="1" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="dni"/>
+      <foreign-key name="idarea" columns="idarea" ref-table="bh_area" ref-schema="" ref-catalog="bpohorario" ref-columns="idarea" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="idtipo_usuario" columns="idtipo_usuario" ref-table="bh_tipo_usuario" ref-schema="" ref-catalog="bpohorario" ref-columns="idtipo_usuario" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="idarea_idx" unique="false" columns="idarea"/>
+      <index name="idestado_idx" unique="false" columns="idestado"/>
+      <index name="idtipo_usuario_idx" unique="false" columns="idtipo_usuario"/>
+    </table>
+    <table name="logs" schema="" catalog="bpohorario" type="TABLE">
+      <column name="USER_ID" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="DATED" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="LOGGER" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LEVEL" sqlType="VARCHAR" precision="10" scale="0" nullable="false" jdbcType="12"/>
+      <column name="MESSAGE" sqlType="VARCHAR" precision="3000" scale="0" nullable="false" jdbcType="12"/>
+    </table>
+  </data-source>
+</component>

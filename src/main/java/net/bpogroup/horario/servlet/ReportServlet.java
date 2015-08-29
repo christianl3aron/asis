@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import net.bpogroup.horario.dao.bean.UsuarioBean;
+import net.bpogroup.horario.model.UsuarioBean;
 import net.bpogroup.horario.service.imp.ReportServiceImp;
 import net.bpogroup.horario.util.UtilApp;
 import org.apache.log4j.Logger;

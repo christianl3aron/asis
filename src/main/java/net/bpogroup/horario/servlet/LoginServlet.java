@@ -10,9 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mysql.jdbc.Connection;
-import net.bpogroup.horario.dao.bean.EstadoBean;
-import net.bpogroup.horario.dao.bean.UsuarioBean;
+import net.bpogroup.horario.model.EstadoBean;
+import net.bpogroup.horario.model.UsuarioBean;
 import net.bpogroup.horario.service.imp.HorarioServiceImp;
 import net.bpogroup.horario.service.imp.LoginServiceImp;
 import org.apache.log4j.Logger;
@@ -28,7 +27,6 @@ public class LoginServlet extends HttpServlet {
 
         String accion = request.getParameter("accion");
         Logger logger = Logger.getLogger(this.getClass());
-        Connection con =null;
 
         if(accion.equals("login")) {
             try {
@@ -78,9 +76,9 @@ public class LoginServlet extends HttpServlet {
                     RequestDispatcher dispa4 = this.getServletContext().getRequestDispatcher("/panel.jsp");
                     dispa4.forward(request, response);
                 }
-            } catch (Exception var14) {
+            } catch (Exception e) {
                 // Redireccionar a pagina de inicio
-                logger.error(var14.toString().replace("\'", ""), var14);
+                logger.error(e.toString().replace("\'", ""), e);
                 request.setAttribute("mensajeError", "Falla de sistema !!!");
                 RequestDispatcher dispa = this.getServletContext().getRequestDispatcher("/index.jsp");
                 dispa.forward(request, response);

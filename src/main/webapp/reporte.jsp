@@ -7,7 +7,7 @@
 <%@page import="java.util.Date" %>
 <%@page import="java.text.SimpleDateFormat" %>
 <%@page import="java.text.DateFormat" %>
-<%@page import="net.bpogroup.horario.dao.bean.UsuarioBean" %>
+<%@page import="net.bpogroup.horario.model.UsuarioBean" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 

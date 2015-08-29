@@ -1,11 +1,21 @@
-package net.bpogroup.horario.dao.bean;
+package net.bpogroup.horario.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by Christianl3aron on 13/03/2015.
  */
+@Entity
+@Table(name = "bh_cargo")
 public class CargoBean {
 
+    @Id
+    @Column(name = "idcargo")
     int codigo;
+    @Column(name = "cargo")
     String cargo;
 
     public CargoBean() {
@@ -30,5 +40,10 @@ public class CargoBean {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
+    }
+
+    @Override
+    public String toString() {
+        return "id=" + codigo + ", name=" + cargo;
     }
 }

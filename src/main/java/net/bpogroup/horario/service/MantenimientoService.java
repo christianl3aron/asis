@@ -1,8 +1,8 @@
 package net.bpogroup.horario.service;
 
-import net.bpogroup.horario.dao.bean.AreaBean;
-import net.bpogroup.horario.dao.bean.AsistenciaBean;
-import net.bpogroup.horario.dao.bean.UsuarioBean;
+import net.bpogroup.horario.model.AreaBean;
+import net.bpogroup.horario.model.AsistenciaBean;
+import net.bpogroup.horario.model.UsuarioBean;
 
 import java.util.Date;
 import java.util.List;

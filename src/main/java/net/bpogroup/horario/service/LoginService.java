@@ -1,6 +1,6 @@
 package net.bpogroup.horario.service;
 
-import net.bpogroup.horario.dao.bean.UsuarioBean;
+import net.bpogroup.horario.model.UsuarioBean;
 
 /**
  * Created by Christianl3aron on 12/03/2015.

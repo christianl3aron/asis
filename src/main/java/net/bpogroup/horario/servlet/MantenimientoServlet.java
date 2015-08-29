@@ -1,8 +1,8 @@
 package net.bpogroup.horario.servlet;
 
-import net.bpogroup.horario.dao.bean.AreaBean;
-import net.bpogroup.horario.dao.bean.AsistenciaBean;
-import net.bpogroup.horario.dao.bean.UsuarioBean;
+import net.bpogroup.horario.model.AreaBean;
+import net.bpogroup.horario.model.AsistenciaBean;
+import net.bpogroup.horario.model.UsuarioBean;
 import net.bpogroup.horario.service.MantenimientoService;
 import net.bpogroup.horario.service.imp.MantenimientoServiceImp;
 import net.bpogroup.horario.util.UtilApp;
@@ -16,9 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 

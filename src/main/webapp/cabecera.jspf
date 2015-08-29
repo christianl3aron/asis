@@ -34,7 +34,12 @@
                     </ul>
                 </li>
             </c:if>
-
+            <li class='active has-sub'><a href='#'><span>Monitoreo</span></a>
+                <ul>
+                    <li class='has-sub'><a href="monitor?a=ma"><span>Monitorear asistencias</span></a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </c:if>
 

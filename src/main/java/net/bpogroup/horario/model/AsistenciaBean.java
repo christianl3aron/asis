@@ -1,20 +1,36 @@
-package net.bpogroup.horario.dao.bean;
+package net.bpogroup.horario.model;
 
-import java.util.Date;
+import javax.persistence.*;
 
 /**
  * Created by Christianl3aron on 13/03/2015.
  */
+@Entity
+@Table(name = "bh_horario")
 public class AsistenciaBean {
 
+    @ManyToOne
+    @JoinColumn(name = "dni",referencedColumnName = "dni")
     private UsuarioBean usuarioBean;
+    @Id
+    @Column(name = "dia")
     private String dia;
+    @Column(name = "ini_jornada")
     private String iniDia;
+    @Column(name = "ini_break")
     private String iniBreak;
+    @Column(name = "fin_break")
     private String finBreak;
+    @Column(name = "fin_jornada")
     private String finDia;
 
     public AsistenciaBean() {
+    }
+
+    public AsistenciaBean(UsuarioBean usuarioBean, String dia, String iniDia) {
+        this.usuarioBean = usuarioBean;
+        this.dia = dia;
+        this.iniDia = iniDia;
     }
 
     public AsistenciaBean(UsuarioBean usuarioBean, String dia, String iniDia, String iniBreak, String finBreak, String finDia) {

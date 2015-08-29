@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <servlet>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>net.bpogroup.horario.servlet.LoginServlet</servlet-class>
-</servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>net.bpogroup.horario.servlet.LoginServlet</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>ReportServlet</servlet-name>
         <servlet-class>net.bpogroup.horario.servlet.ReportServlet</servlet-class>
@@ -22,6 +22,10 @@
     <servlet>
         <servlet-name>MantenimientoServlet</servlet-name>
         <servlet-class>net.bpogroup.horario.servlet.MantenimientoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>MonitorServlet</servlet-name>
+        <servlet-class>net.bpogroup.horario.servlet.MonitorServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -42,6 +46,10 @@
     <servlet-mapping>
         <servlet-name>MantenimientoServlet</servlet-name>
         <url-pattern>/MantenimientoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MonitorServlet</servlet-name>
+        <url-pattern>/monitor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
