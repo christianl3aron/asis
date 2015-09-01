@@ -1,6 +1,7 @@
 package net.bpogroup.horario.util;
 
 import net.bpogroup.horario.model.AsistenciaBean;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -12,7 +13,10 @@ import java.util.List;
  */
 public final class UtilApp {
 
-    private UtilApp() {
+    static ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+
+    public static ClassPathXmlApplicationContext getContext() {
+        return context;
     }
 
     public static Date getDate(String ti) throws Exception {

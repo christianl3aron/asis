@@ -11,10 +11,10 @@
 
 <html>
 <head>
-    <link rel="stylesheet" href="css/main.css">
-    <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../../resources/css/main.css">
+    <script src="../../resources/js/jquery-1.11.1.min.js" type="text/javascript"></script>
 
-    <script src="js/clock.js" type="text/javascript"></script>
+    <script src="../../resources/js/clock.js" type="text/javascript"></script>
 
     <title></title>
 </head>

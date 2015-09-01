@@ -7,7 +7,6 @@
 <%@page import="java.util.Date" %>
 <%@page import="java.text.SimpleDateFormat" %>
 <%@page import="java.text.DateFormat" %>
-<%@page import="net.bpogroup.horario.model.UsuarioBean" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -16,19 +15,10 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>BPO Group</title>
-    <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="js/reporte/reporteAsistencia.js" type="text/javascript"></script>
-    <link type="text/css" rel="stylesheet" href="css/reporte.css"/>
-
-    <%
-        UsuarioBean usuarioBean = (UsuarioBean) request.getSession().getAttribute("usuario");
-        if (request.getSession(false) == null || request.getSession().getAttribute("usuario") == null || usuarioBean.getTipoUsuarioBean().getCodigo() == 2) {
-            response.sendRedirect("index.jsp");
-            return;
-        }
-    %>
-
-    <link rel="stylesheet" type="text/css" href="js/clockpicker/css/bootstrap.min.css">
+    <script src="../../resources/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="../../resources/js/reporte/reporteAsistencia.js" type="text/javascript"></script>
+    <link type="text/css" rel="stylesheet" href="../../resources/css/reporte.css"/>
+    <link rel="stylesheet" type="text/css" href="../../resources/js/clockpicker/css/bootstrap.min.css">
 
 </head>
 <body>
@@ -48,7 +38,7 @@
     <label for="timeFin">Fecha Fin :</label>
     <input type="date" name="timeFin" id="timeFin" value="<%= dateFormat.format(today) %>"
            min="2014-11-01"/>
-    <a id="descarga" target="_blank" download><img id="imgDescarga" src="img/download.png" alt="descargar"/></a>
+    <a id="descarga" target="_blank" download><img id="imgDescarga" src="../../resources/img/download.png" alt="descargar"/></a>
 
 </div>
 

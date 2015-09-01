@@ -8,16 +8,20 @@ import java.util.Date;
 import net.bpogroup.horario.dao.ReportDAO;
 import net.bpogroup.horario.util.ConexionBD;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 
 /**
  * Created by Christianl3aron on 12/03/2015.
  */
-
+@Repository
 public class ReportDAOImp implements ReportDAO {
 
     private SessionFactory sessionFactory;
 
+    @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

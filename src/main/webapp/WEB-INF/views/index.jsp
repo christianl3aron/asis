@@ -12,10 +12,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>BPO Group</title>
-        <link type="text/css" rel="stylesheet" href="css/main.css" />
-        <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
-        <script src="js/loginValidator.js" type="text/javascript"></script>
-        <script src="js/clock.js" type="text/javascript"></script>
+        <link type="text/css" rel="stylesheet" href="../../resources/css/main.css" />
+        <script src="../../resources/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="../../resources/js/loginValidator.js" type="text/javascript"></script>
+        <script src="../../resources/js/clock.js" type="text/javascript"></script>
     </head>
     <body id="bd-logueo">
         <div class="encabezado_login">
@@ -28,7 +28,7 @@
         </div>
         <div id="sc-login">
             <div id="hmain">Iniciar sesión</div>
-            <form action="LoginServlet" method="post">
+            <form action="/home" method="post">
                 <label for="txtUsuario">Usuario</label><br>
                 <input type="text" name="txtUsuario" id="txtUsuario" size="20" required autofocus/><br>
                 <label for="txtClave">Contraseña</label><br>

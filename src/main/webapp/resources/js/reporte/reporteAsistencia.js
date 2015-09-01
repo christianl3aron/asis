@@ -5,9 +5,9 @@ $(document).ready(function () {
     $('#btnReport').click(function () {
         $.ajax({
             type: 'GET',
-            url: 'ReportServlet',
+            url: '/ajax-reporte',
             data: {
-                a: 'rp',
+                a: 'ra',
                 ti: $('#timeIni').val(),
                 tf: $('#timeFin').val()
             },

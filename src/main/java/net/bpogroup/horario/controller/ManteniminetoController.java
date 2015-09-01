@@ -1,62 +1,79 @@
-package net.bpogroup.horario.servlet;
+package net.bpogroup.horario.controller;
 
 import net.bpogroup.horario.model.AreaBean;
 import net.bpogroup.horario.model.AsistenciaBean;
 import net.bpogroup.horario.model.UsuarioBean;
 import net.bpogroup.horario.service.MantenimientoService;
-import net.bpogroup.horario.service.imp.MantenimientoServiceImp;
+import net.bpogroup.horario.service.ReportService;
 import net.bpogroup.horario.util.UtilApp;
 import org.apache.log4j.Logger;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Christianl3aron on 14/03/2015.
+ * Created by Christianl3aron on 1/09/2015.
  */
-public class MantenimientoServlet extends HttpServlet {
+@Controller
+public class ManteniminetoController {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // a traves de AJAX
-        PrintWriter out = response.getWriter();
-        response.setContentType("text/html;charset=UTF-8");
+    @RequestMapping(value = "/mantenimiento-asistencia")
+    public ModelAndView loanManteniminetoAsistencia(HttpServletRequest request) {
+
+        ModelAndView modelAndView = new ModelAndView();
+        UsuarioBean usuarioSession = (UsuarioBean) request.getSession().getAttribute("usuario");
+
+        if (null != usuarioSession && 2 != usuarioSession.getTipoUsuarioBean().getCodigo()) {
+            MantenimientoService mantenimientoService = UtilApp.getContext().getBean(MantenimientoService.class);
+            List<UsuarioBean> listaUsuarios = null;
+            List<AreaBean> listaAreas = null;
+
+            try {
+                listaUsuarios = mantenimientoService.getUsuariosParaCombobox();
+                listaAreas = mantenimientoService.getAreaParaCombobox();
+            } catch (Exception e) {
+            }
+            modelAndView.addObject("listaUsuarios", listaUsuarios);
+            modelAndView.addObject("listaAreas", listaAreas);
+            modelAndView.setViewName("modificaAsistencia");
+        } else if (null == usuarioSession) {
+            return new ModelAndView("redirect:/");
+        } else {
+            return new ModelAndView("redirect:/home");
+        }
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/mantenimiento-event", method = RequestMethod.GET)
+    public void sendReport(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Logger logger = Logger.getLogger(this.getClass());
-        String action = request.getParameter("act");
+        PrintWriter out = response.getWriter();
+        response.setContentType("text/html;charset=UTF-8");
+        String accion = request.getParameter("a");
 
-        if (action.equals("lusers")) {
-            // Si la accion es lusers("Load usuarios") enviar List<UsuarioBean> al Select de HTML
-            try {
-                MantenimientoService mantenimientoService = new MantenimientoServiceImp();
-                List<UsuarioBean> listaUsuarios = mantenimientoService.getUsuariosParaCombobox();
-                List<AreaBean> listaAreas = mantenimientoService.getAreaParaCombobox();
-
-                request.setAttribute("listaUsuarios", listaUsuarios);
-                request.setAttribute("listaAreas", listaAreas);
-
-                RequestDispatcher dispa = getServletContext().getRequestDispatcher("/modificaAsistencia.jsp");
-                dispa.forward(request, response);
-
-            } catch (Exception e) {
-                logger.error(e.toString().replace("\'", ""), e);
-            }
-
-        } else if (action.equals("showAsi")) {
+        if (accion.equals("showAsi")) {
             // Si la accion es showAsi("Show Asistencia") enviar List<AsistenciaBena> al div
             try {
                 String listaDni = request.getParameter("cods");
                 Date ti = UtilApp.getDate(request.getParameter("ti"));
-                Date tf= UtilApp.addADay(request.getParameter("tf"));
+                Date tf = UtilApp.addADay(request.getParameter("tf"));
 
-                MantenimientoService mantenimientoService = new MantenimientoServiceImp();
+                MantenimientoService mantenimientoService = UtilApp.getContext().getBean(MantenimientoService.class);
                 List<AsistenciaBean> la = mantenimientoService.getAsistenciasPorUsuarios(ti, tf, listaDni);
                 if (la.size() > 0) {
                     out.println("<table class=\"tab-mod-asistencia\">");
@@ -83,32 +100,22 @@ public class MantenimientoServlet extends HttpServlet {
                     out.println("</tr>");
                 }
                 out.println("</table>");
-                out.println("<script src=\"js/mantenimiento/modificaAsistencia.js\" type=\"text/javascript\"></script>");
-
+                out.println("<script src=\"resources/js/mantenimiento/modificaAsistencia.js\" type=\"text/javascript\"></script>");
+                out.close();
             } catch (Exception e) {
                 logger.error(e.toString().replace("\'", ""), e);
             }
-        } else if (action.equals("saveCha")) {
+        } else if (accion.equals("saveCha")) {
             try {
                 String dnis = request.getParameter("ids");
                 String vals = request.getParameter("vals");
-                MantenimientoService mantenimientoService = new MantenimientoServiceImp();
+                MantenimientoService mantenimientoService = UtilApp.getContext().getBean(MantenimientoService.class);
                 mantenimientoService.saveAsistencia(dnis, vals);
-                HttpSession miSesion = request.getSession();
-                UsuarioBean usuarioBean = (UsuarioBean)miSesion.getAttribute("usuario");
-                logger.info(usuarioBean.getDni() + " esta actualizando " +dnis+" "+vals);
+                UsuarioBean usuarioBean = (UsuarioBean) request.getSession().getAttribute("usuario");
+                logger.info(usuarioBean.getDni() + " esta actualizando " + dnis + " " + vals);
             } catch (Exception e) {
                 logger.error(e.toString().replace("\'", ""), e);
             }
         }
-        out.close();
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.processRequest(request, response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.processRequest(request, response);
     }
 }

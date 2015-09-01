@@ -10,10 +10,6 @@ import java.util.List;
  */
 public interface AsistenciaDAO {
 
-    List<AsistenciaBean> getAsistenciasPorUsuarios(Date ti, Date tf, String dnis) throws Exception;
-
-    void saveAsistencia(String dnis, String vals) throws Exception;
-
     List<AsistenciaBean> listAsistenciasPorUsuarios(Date ti, Date tf, String dnis) throws Exception;
 
     List<AsistenciaBean> listAsistenciasParaMonitor() throws Exception;

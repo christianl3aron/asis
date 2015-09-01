@@ -16,18 +16,18 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>BPO Group</title>
-    <link rel="stylesheet" href="js/chosen/chosen.min.css">
-    <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="js/chosen/chosen.jquery.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="css/mantenimiento.css">
+    <link rel="stylesheet" href="../../resources/js/chosen/chosen.min.css">
+    <script src="../../resources/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="../../resources/js/chosen/chosen.jquery.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/css/mantenimiento.css">
 
     <!-- imports del Clockpicker -->
-    <link rel="stylesheet" type="text/css" href="js/clockpicker/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="js/clockpicker/css/bootstrap-clockpicker.min.css">
-    <link rel="stylesheet" type="text/css" href="js/clockpicker/css/github.min.css">
-    <script type="text/javascript" src="js/clockpicker/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/clockpicker/js/bootstrap-clockpicker.min.js"></script>
-    <script type="text/javascript" src="js/clockpicker/js/highlight.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../resources/js/clockpicker/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/js/clockpicker/css/bootstrap-clockpicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/js/clockpicker/css/github.min.css">
+    <script type="text/javascript" src="../../resources/js/clockpicker/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/clockpicker/js/bootstrap-clockpicker.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/clockpicker/js/highlight.min.js"></script>
 
     <style type="text/css" media="all">
         /* fix rtl for demo */
@@ -125,9 +125,10 @@
                 //alert($("#sltPersonal").chosen().val());
                 $.ajax({
                     type: 'GET',
-                    url: 'MantenimientoServlet',
+                    url: '/mantenimiento-event',
+                    async: true,
                     data: {
-                        act: 'showAsi',
+                        a: 'showAsi',
                         ti: $('#timeIni').val(),
                         tf: $('#timeFin').val(),
                         cods: $("#sltPersonal").chosen().val().toString()
@@ -146,9 +147,10 @@
 
                 $.ajax({
                     type: 'GET',
-                    url: 'MantenimientoServlet',
+                    url: '/mantenimiento-event',
+                    async: true,
                     data: {
-                        act: 'saveCha',
+                        a: 'saveCha',
                         ids: ids.toString(),
                         vals: vals.toString()
                     },
@@ -166,17 +168,8 @@
         });
     </script>
 
-    <script src="js/clockpicker/js/html5shiv.js"></script>
-    <script src="js/clockpicker/js/respond.min.js"></script>
-
-
-    <%
-        UsuarioBean usuarioBean = (UsuarioBean) request.getSession().getAttribute("usuario");
-        if (request.getSession(false) == null || request.getSession().getAttribute("usuario") == null || usuarioBean.getTipoUsuarioBean().getCodigo() == 2) {
-            response.sendRedirect("index.jsp");
-            return;
-        }
-    %>
+    <script src="../../resources/js/clockpicker/js/html5shiv.js"></script>
+    <script src="../../resources/js/clockpicker/js/respond.min.js"></script>
 
     <!--style>
         .mod-asi-container {

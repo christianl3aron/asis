@@ -1,0 +1,4 @@
+Nro	Apellidos y Nombres	DNI	Area	Cargo	Fecha de Ingreso	Hora de Ingreso	Fecha de Salida	Hora de Salida	Horario de Inicio de Refrigerio	Horario de Termino de Refrigerio	Gestion por dia	Estado
+1	Paola Quinones Velez	06807369	Operaciones	Jefe de Operaciones	2015-08-31	21:26:10	2015-08-31	21:26:18	2015-08-31 21:26:13	2015-08-31 21:26:15	00:00:06	Activo
+2	Nancy Emperatriz Vega Quintanilla	10549759	Operaciones	Supervisor de Calidad y Formacion	2015-08-31	21:33:53	2015-08-31	21:34:17	2015-08-31 21:34:03	2015-08-31 21:34:10	00:00:17	Activo
+3	christia baron	47143809	Sistemas	Soporte Tecnico	2015-08-31	21:57:39	null	null	2015-08-31 22:27:40	null	null	Activo

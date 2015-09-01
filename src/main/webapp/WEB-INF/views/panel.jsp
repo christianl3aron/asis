@@ -14,31 +14,31 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>BPO Group</title>
-        <link type="text/css" rel="stylesheet" href="css/main.css" />
-        <link rel="stylesheet" href="css/styles.css">
-        <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
-        <script src="js/clock.js" type="text/javascript"></script>
-        <%
+        <link type="text/css" rel="stylesheet" href="../../resources/css/main.css" />
+        <link rel="stylesheet" href="../../resources/css/styles.css">
+        <script src="../../resources/js/jquery-1.11.1.min.js" type="text/javascript"></script>
+        <script src="../../resources/js/clock.js" type="text/javascript"></script>
+        <!--%
             // LA SEGURIDAD
             if (request.getSession(false) == null || request.getSession().getAttribute("usuario") == null) {
                 response.sendRedirect("index.jsp");
                 return;
             }
-        %>
+        %-->
     </head>
     <body>
         <%@include file="cabecera.jspf" %>
 
 
         <div id="divTimer">
-            <span id="fecha"></span> 
+            <span id="fecha"></span>
             <br>
             <span id="reloj"></span>
         </div>
 
         <div id="divbotones">
 
-            <script src="js/main.js" type="text/javascript"></script>
+            <script src="../../resources/js/main.js" type="text/javascript"></script>
             <%--<c:choose>
                 <c:when test="${sessionScope.usuario.estadoBean.codigo == 4}">
                     <button type='button' id="btnij" style="width: 200px;height: 200px;margin-right:30px" >inicio jornada</button>

@@ -9,9 +9,5 @@ import java.util.List;
  */
 public interface AreaDAO {
 
-    List<AreaBean> getAreas() throws Exception;
-
-    void save(AreaBean areaBean) throws Exception;
-
     List<AreaBean> listAll() throws Exception;
 }
